@@ -10,34 +10,33 @@
     version="3.0">
     <xd:doc scope="stylesheet">
         <xd:desc>
-            <xd:p>Factoton’s renderer exemple with xsl template</xd:p>
+            <xd:p>Factoton’s renderer exemple with functions</xd:p>
         </xd:desc>
     </xd:doc>
     
     <xsl:output method="xhtml" html-version="5.0" include-content-type="no" omit-xml-declaration="yes" exclude-result-prefixes="#all" encoding="UTF-8" indent="yes"/>
     <xsl:strip-space elements="*"/>
 
-    <xsl:variable name="contentPath" select="'./xml/article01.xml'"/>
-    <xsl:variable name="xsltPath" select="'./xsl/tei2html.xsl'"/>
-    <xsl:variable name="buildPath" select="'/Users/emmanuelchateau/'"/>
+    <xsl:variable name="contentPath" select="'../../ouvroir/nucma/01-acquisition/article01.xml'"/>
+    <xsl:variable name="buildPath" select="doc(file:base-dir() || 'config.xml')/fct:config/fct:build"/>
+    
+    <xsl:variable name="result" as="element()+" select="fct:render('')"/>
 
     <xsl:template name="xsl:initial-template">
-        <xsl:result-document>
-            <xsl:value-of select="fct:generate(
-                $contentPath,
-                $xsltPath)"/>
+        <xsl:result-document href="images/one-spline.xhtml" method="xml" indent="yes"
+            doctype-public="about:legacy-compat">
+            <xsl:sequence select=""/>
         </xsl:result-document>
     </xsl:template>
     
-    <xsl:function name="fct:generate" as="item()*">
+    <xsl:function name="fct:generate" as="item()+">
         <xsl:param name="source" as="xs:string" />
         <xsl:param name="xsl" as="xs:string"/>
-        <xsl:variable name="result" select="transform(
+        <xsl:sequence select="transform(
             map{
             'stylesheet-location' : $xsl,
             'source-node' : doc($source)
-            })?output"/>
-        <xsl:sequence select="file:write($buildPath || 'result.html', $result)"/>
+            })"/>
     </xsl:function>
 
 </xsl:stylesheet>

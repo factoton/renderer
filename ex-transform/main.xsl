@@ -17,13 +17,16 @@
     <xsl:output method="xhtml" html-version="5.0" include-content-type="no" omit-xml-declaration="yes" exclude-result-prefixes="#all" encoding="UTF-8" indent="yes"/>
     <xsl:strip-space elements="*"/>
 
-    <xsl:variable name="contentPath" select="'../../ouvroir/nucma/01-acquisition/article01.xml'"/>
-    <xsl:variable name="buildPath" select="doc(file:base-dir() || 'config.xml')/fct:config/fct:build"/>
+    <xsl:variable name="contentPath" select="'../../../ouvroir/nucma/01-acquisition/article01.xml'"/>
+    <xsl:variable name="buildPath" select="'../test'"/>
+    <xsl:variable name="xslPath" select="'../xsl/'"/>
 
     <xsl:template name="xsl:initial-template">
-        <xsl:value-of select="fct:generate(
-            $contentPath,
-            'xsl/' || 'tei2html.xsl')"/>
+        <xsl:result-document method="html">
+            <xsl:sequence select="fct:generate(
+                $contentPath,
+                $xslPath || 'tei2html.xsl')?output"/>
+        </xsl:result-document>
     </xsl:template>
     
     <xsl:function name="fct:generate" as="item()+">

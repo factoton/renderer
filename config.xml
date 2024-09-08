@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns="factoton">
+   <content>../xml</content> <!--relative path top-down approach => easier for path handling-->
+   <build>../build02/</build>
+   <collection>
+      <doc href="file:/Users/flsh/OneDrive/ProjetEncyclopedie/encyclopedie/prototype/xml/index.xml"/>
+      <doc href="file:/Users/flsh/OneDrive/ProjetEncyclopedie/encyclopedie/prototype/xml/acquisition/index.xml"/>
+      <doc href="file:/Users/flsh/OneDrive/ProjetEncyclopedie/encyclopedie/prototype/xml/acquisition/article02.xml"/>
+      <doc href="file:/Users/flsh/OneDrive/ProjetEncyclopedie/encyclopedie/prototype/xml/acquisition/article01.xml"/>
+      <doc href="file:/Users/flsh/OneDrive/ProjetEncyclopedie/encyclopedie/prototype/xml/meta/bibl.xml"/>
+      <doc href="file:/Users/flsh/OneDrive/ProjetEncyclopedie/encyclopedie/prototype/xml/meta/auteurs.xml"/>
+      <doc href="file:/Users/flsh/OneDrive/ProjetEncyclopedie/encyclopedie/prototype/xml/meta/media.xml"/>
+   </collection>
+</config>
