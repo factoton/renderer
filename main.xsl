@@ -17,7 +17,7 @@
     <xsl:output method="xhtml" html-version="5.0" include-content-type="no" omit-xml-declaration="yes" exclude-result-prefixes="#all" encoding="UTF-8" indent="yes"/>
     <xsl:strip-space elements="*"/>
 
-    <xsl:variable name="contentPath" select="'./xml/article01.xml'"/>
+    <xsl:variable name="contentPath" select="'./ex-xsl-templates/xml/article01.xml'"/>
     <xsl:variable name="xsltPath" select="'./xsl/tei2html.xsl'"/>
     <xsl:variable name="buildPath" select="'/Users/emmanuelchateau/'"/>
 

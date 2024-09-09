@@ -15,6 +15,7 @@
     <!--<xsl:import href="lib/article2html.xsl"/>-->
     
     <!-- components importation -->
+    <!-- @quest would it be possible to automatize importation ? -->
     <xsl:import href="../components/layout.xsl"/>
     <xsl:import href="../components/head.xsl"/>
     <xsl:import href="../components/header.xsl"/>
@@ -31,14 +32,22 @@
     <xsl:variable name="jsPath" select="'js/script.js'" />
     
     <!-- @todo deal with title, description and meta with a function for different file types -->
-    <xsl:variable name="title" select="'Test de titre'"/>
-    <xsl:variable name="description" select="'Test de titre'"/>
-    <xsl:variable name="authors" select="'Test d’auteurs'"/>
+    <xsl:variable name="meta" as="map(*)">
+        <xsl:map>
+            <xsl:map-entry key="'title'" select="'Test de titre'"/>
+            <xsl:map-entry key="'description'" select="'Ceci est un exemple de description'"/>
+            <xsl:map-entry key="'authors'" select="'Emmanuel Chateau'"/>
+            <!-- @todo test TEI content and typed based templating -->
+        </xsl:map>
+    </xsl:variable>
+    <xsl:variable name="content" as="map(*)">
+        <xsl:map></xsl:map>
+    </xsl:variable>
     
     <xsl:template match="/TEI">
         <xsl:call-template name="layout">
-            <xsl:with-param name="title" select="$title"/>
-            <xsl:with-param name="description" select="$description"/>
+            <xsl:with-param name="meta" select="$meta" as="map(*)"/>
+            <xsl:with-param name="content" select="$content" as="map(*)"/>
         </xsl:call-template>
     </xsl:template>
     
